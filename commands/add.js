@@ -1,6 +1,7 @@
 const { prompt } = require('inquirer');
 const moment = require('moment');
-const addTodoDb = require('../index');
+//const addTodoDb = require('../index');
+const {addTodoIn, findTodoIn} = require('../index');
 
 const questions = [
     {
@@ -28,7 +29,7 @@ const questions = [
  const Add = {
      add(){
         prompt(questions).then((answers) => {
-            addTodoDb(answers)
+            addTodoIn(answers)
         })
     }
  }

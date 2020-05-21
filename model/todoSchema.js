@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const todoSchema = mongoose.Schema({
     task: { type: String },
-    date: { type: String },
+    date: { type: Date },
     time: { type: String },
     status: { type: String, default: 'Incomplete' },
     tag: { type: String}
