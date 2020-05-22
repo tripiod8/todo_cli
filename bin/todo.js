@@ -2,11 +2,9 @@
 const program = require('commander');
 const { prompt } = require('inquirer');
 const pkg = require('../package.json');
-const addTodo = require('../commands/add');
-const { addTodoIn, findTodoIn, updateTodoIn, removeTodoIn, listTodoIn, fixTodoIn } = require('../index');
-
-program
-.version(pkg.version)
+const { addTodoIn, removeTodoIn} = require('../index');
+const findTodoIn = require('../controllers/locate');
+const { updateTodoIn, fixTodoIn } = require('../controllers/modify');
 
 const questions = [
     {
@@ -32,48 +30,39 @@ const questions = [
   ];
 
 program
-.command('add')
-//.alias('a')
-.description('Add a todo')
-.action(() => {
-    prompt(questions).then((answers) => {
-        addTodoIn(answers)
-    })
-})
+.version(pkg.version)
+.command('locate', 'Locate something')
 
-program
-.command('find <tag>')
-//.alias('f')
-.description('Find a todo')
-.action(tag => findTodoIn(tag))
+  program
+  .command('add')
+  .alias('a')
+  .description('Add a todo')
+  .action(() => {
+      prompt(questions).then((answers) => {
+          addTodoIn(answers)
+      })
+  });
 
-program
-.command('update <_id>')
-//.alias('u')
-.description('Update a todo')
-.action(_id => updateTodoIn(_id))
+ program
+ .command('update <_id>')
+ .alias('u')
+ .description('Update a todo')
+ .action(_id => updateTodoIn(_id))
 
-program
-.command('remove <_id>')
-//.alias('r')
-.description('Remove a todo')
-.action(_id => removeTodoIn(_id))
+  program
+  .command('remove <_id>')
+  .alias('r')
+  .description('Remove a todo')
+  .action(_id => removeTodoIn(_id));
 
-
-program
-.command('list <date>')
-//.alias('l')
-.description('List todos')
-.action(date => listTodoIn(date))
-
-program.command('fix <_id>')
-//.alias('x')
-.description('Fix a todo')
-.action((_id) => {
-  prompt(questions).then((answers) => {
-      fixTodoIn(_id, answers)
-  })
-})
-
+ program
+ .command('fix <_id>')
+ .alias('x')
+ .description('Fix a todo')
+ .action((_id) => {
+   prompt(questions).then((answers) => {
+       fixTodoIn(_id, answers)
+   })
+ });
 
 program.parse(process.argv);
