@@ -3,7 +3,7 @@ const program = require('commander');
 const { prompt } = require('inquirer');
 const pkg = require('../package.json');
 const { addTodoIn, removeTodoIn} = require('../index');
-const findTodoIn = require('../controllers/locate');
+const {findTodoIn, listTodoIn} = require('../controllers/locate');
 const { updateTodoIn, fixTodoIn } = require('../controllers/modify');
 
 const questions = [
