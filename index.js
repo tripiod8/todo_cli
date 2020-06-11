@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// Connect to Mongo
+//Connect to Mongo
 const db = mongoose.connect('mongodb://localhost:27017/todoDB', {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -8,7 +8,7 @@ const db = mongoose.connect('mongodb://localhost:27017/todoDB', {
 //.then(() => console.log('MongoDB Connected...'))
 //.catch(err =>console.log(err));
 
-// Import Model
+//Model
 const Todo = require('./model/todoSchema');
 
 // Add Todo
@@ -19,9 +19,7 @@ const addTodoIn = (todo) => {
   }).catch(err => console.error(err));
 };
 
-
-
-// Remove Todo
+//Remove Todo
 const removeTodoIn = (_id) => {
   Todo.deleteOne({ _id })
     .then(todo => {

@@ -1,21 +1,36 @@
 const program = require('commander');
-const findTodoIn = require('../controllers/locate');
+const { allTodoIn, tagTodoIn, dateTodoIn, upcomingTodoIn, incompleteTodoIn } = require('../controllers/locate');
 
 program
-.command('find <_tag>')
-//.alias('f')
-.description('Find a todo')
-.action((_tag) => findTodoIn(_tag))
+.command('all')
+.alias('z')
+.description('Locate all todos')
+.action(() => allTodoIn())
 
+program
+.command('tag <_tag>')
+.alias('t')
+.description('Locate todos by tag')
+.action((_tag) => tagTodoIn(_tag))
 
-// program
-// .command('list')
-// .action(main())
-//  program
-//  .command('list <_date>')
-// // .alias('l')
-// .description('List a todo')
-// .action(_date => listTodoIn(_date));
-program.parseAsync(process.argv);
+program
+.command('date <_date>')
+.alias('d')
+.description('Locate todos by date')
+.action((_date) => dateTodoIn(_date))
+
+ program
+ .command('upcoming <_date>')
+.alias('u')
+.description('Locate upcoming todos')
+.action(_date => upcomingTodoIn(_date));
+
+program
+.command('incomplete')
+.alias('i')
+.description('Locate incomplete todos')
+.action(() => incompleteTodoIn());
+
+program.parse(process.argv);
 
 
