@@ -32,13 +32,30 @@ program
 .action(_id => completeTodoIn(_id));
 
 program
-.command('fix <_id>')
-.alias('x')
+.command('fix')
 .description('Fix a todo')
-.action((_id) => {
-    prompt(questions).then((answers) => {
-        fixTodoIn(_id, answers)
-    });
+.requiredOption('-i, --id <_id>', 'Must have an _id')
+.option('-w, --what <type>', 'Here is some query test text', 'all')
+.action((cmd) => {
+   console.log(cmd.id);
+   console.log(cmd.what);
+   if(cmd.what === 'all'){
+     prompt(questions).then(answers => {
+       fixTodoIn(cmd.id, answers)
+     })
+   } else if(cmd.what === 'task'){
+    prompt(questions[0]).then(answers => {
+      fixTodoIn(cmd.id, answers)
+    })
+   } else if(cmd.what === 'date'){
+    prompt(questions[1]).then(answers => {
+      fixTodoIn(cmd.id, answers)
+    })
+   } else if(cmd.what === 'tag'){
+    prompt(questions[2]).then(answers => {
+      fixTodoIn(cmd.id, answers)
+    })
+   }
 });
 
 program.parse(process.argv);
