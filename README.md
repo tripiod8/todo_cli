@@ -14,15 +14,22 @@ Some eample text.
 - Create symlink in the global folder: npm link
 - Run command: todo
 
-## Use Application
+## Commands
 
 ### Options
 
 - Version: todo --version | todo -V
-- help: todo --help | todo -h
+- Help: todo --help | todo -h
 
-### Commands
+### Add 
 
-heres some text.
+- Add: todo add | todo -a
+
+### locate
+| Syntax | Description |
+| ----------- | ----------- |
+| Header | Title |
+| Paragraph | Text |
+
 
 
