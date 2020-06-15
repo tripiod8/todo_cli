@@ -25,11 +25,14 @@ Some eample text.
 
 - Add: todo add | todo -a
 
-### locate
-| Syntax | Description |
-| ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
+### Locate
 
+| Syntax | Alias | Arg |
+| ----------- | ----------- | ----------- |
+| all | z |
+| tag | t | keyword |
+| date | d | mm-dd-yyyy |
+| upcoming | u | mm-dd-yyyy |
+| incomplete | i |
 
 
