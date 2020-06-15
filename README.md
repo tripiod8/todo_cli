@@ -1,5 +1,7 @@
 # Todo Cli Application
 
+![todo image](todo_img.png)
+
 Some eample text.
 
 
@@ -11,7 +13,7 @@ Some eample text.
 ## Quick Start
 
 - Clone the repo: git clone https://github.com/tripiod8/todo_cli.git
-- Create symlink in the global folder: npm link
+- Create symlink in the global folder: npm link <-- Required
 - Run command: todo
 
 ## Commands
